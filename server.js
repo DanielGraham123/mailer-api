@@ -16,19 +16,20 @@ const html = md.render(readme.toString().replaceAll('{domain.com}', process.env?
 // Configure CORS
 var whitelist = process.env?.WHITELIST && process.env?.WHITELIST !== '' ? process.env.WHITELIST?.split(',') : [];
 if (whitelist.length > 0) {
-    console.log("CORS Whitelist: ", whitelist)
+  console.log("CORS Whitelist: ", whitelist)
 }
 var corsOptionsDelegate = function (req, callback) {
   if (whitelist.indexOf(req.header('Origin')) === -1 && req.header('authorization') !== process.env.AUTHORIZATION_KEY) {
     return callback(new Error("Not allowed by CORS"));
-  } 
+  }
   return callback(null, true);
 }
 
+// Serve static files from the "public" directory
+app.use(express.static(path.join(__dirname, "public")));
+
 app.get("/", cors(corsOptionsDelegate), (req, res) => {
-  res.status(200)
-     .set("Content-Type", "text/html")
-     .send(Buffer.from('<body style="background-color: black;"><img src="https://http.cat/200" alt="https://http.cat/200" style="text-align: center;position: absolute;margin: auto;top: 0;right: 0;bottom: 0;left: 0;max-width: 100%;"></body>'));
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 app.get("/readme", (req, res) => {
@@ -76,25 +77,24 @@ app.use(function (err, req, res, next) {
     .send(Buffer.from('<body style="background-color: black;"><img src="https://http.cat/401" alt="https://http.cat/401" style="text-align: center;position: absolute;margin: auto;top: 0;right: 0;bottom: 0;left: 0;max-width: 100%;"></body>'));
 })
 
-app.use(function (req, res, next){
-	return res.status(404)
-        .set("Content-Type", "text/html")
-        .send(Buffer.from('<body style="background-color: black;"><img src="https://http.cat/404" alt="https://http.cat/404" style="text-align: center;position: absolute;margin: auto;top: 0;right: 0;bottom: 0;left: 0;max-width: 100%;"></body>'));
+app.use(function (req, res, next) {
+  return res.status(404)
+    .set("Content-Type", "text/html")
+    .send(Buffer.from('<body style="background-color: black;"><img src="https://http.cat/404" alt="https://http.cat/404" style="text-align: center;position: absolute;margin: auto;top: 0;right: 0;bottom: 0;left: 0;max-width: 100%;"></body>'));
 });
 
 app.use((err, req, res, next) => {
-    console.error("🔴 Express Error Catched:", err.stack);
-    res.status(500)
-        .set("Content-Type", "text/html")
-        .send(Buffer.from('<body style="background-color: black;"><img src="https://http.cat/500" alt="https://http.cat/500" style="text-align: center;position: absolute;margin: auto;top: 0;right: 0;bottom: 0;left: 0;max-width: 100%;"></body>'));
+  console.error("🔴 Express Error Catched:", err.stack);
+  res.status(500)
+    .set("Content-Type", "text/html")
+    .send(Buffer.from('<body style="background-color: black;"><img src="https://http.cat/500" alt="https://http.cat/500" style="text-align: center;position: absolute;margin: auto;top: 0;right: 0;bottom: 0;left: 0;max-width: 100%;"></body>'));
 })
-  
+
 
 app.listen(port, () => {
-    console.log(`🟢 Mailer API listening on port ${port}`);
+  console.log(`🟢 Mailer API listening on port ${port}`);
 });
 
 process.on('uncaughtException', function (err) {
-    console.error("🔴 Node Error Catched:", err.stack);
+  console.error("🔴 Node Error Catched:", err.stack);
 });
-  

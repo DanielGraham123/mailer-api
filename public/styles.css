@@ -1,0 +1,53 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #121212; /* Dark background */
+  color: #e0e0e0; /* Light text color */
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+header {
+  background-color: #1f1f1f; /* Dark header background */
+  color: #ffffff;
+  padding: 20px 0;
+}
+
+.hero {
+  background-color: #1e1e1e; /* Dark card background */
+  padding: 50px 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* Slightly stronger shadow */
+  border-radius: 10px;
+  margin: 50px auto;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.cta-button:hover {
+  background-color: #0056b3;
+}
+
+footer {
+  background-color: #1f1f1f; /* Dark footer background */
+  color: #ffffff;
+  text-align: center;
+  padding: 15px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}

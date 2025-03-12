@@ -22,7 +22,7 @@ sendEmail = function (req, res) {
       replyTo: req.body.replyTo,
       cc: _cc,
       subject: `${req.body.subject}`,
-      text: req.body.text,
+      // text: req.body.text,
       html: req.body.html
     }, res);
   } else {
