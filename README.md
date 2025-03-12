@@ -1,6 +1,6 @@
-# Email Dispatcher API (ﾉ◕ヮ◕)ﾉ*・ﾟ✧ ✉️
+# An Email Dispatcher API
 
-> Small server to send an emails  📭
+> Small server to send an emails using SMTP
 ## API Usage
 
 **Send an email**
