@@ -4,14 +4,13 @@
   "description": "A mailing API server",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "keywords": [
     "email",
     "api",
     "mailer",
-    "mail",
-    "docker"
+    "mail"
   ],
   "author": "Velte Technology Solutions",
   "license": "ISC",

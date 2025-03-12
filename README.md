@@ -55,8 +55,7 @@ npm install
 ```sh
 # With NPM Command Line:
 npm run start
-# or
-# With Docker Compose:
+
 docker-compose up
 ```
 4. Now you can request the following URLs:
