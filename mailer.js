@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer')
 
 sendEmail = function (req, res) {
-  const _cc =  [];
+  const _cc = [];
 
   if (req.body.cc) {
     _cc.push(req.body.cc);
@@ -9,7 +9,7 @@ sendEmail = function (req, res) {
   if (process.env.SMTP_CC) {
     _cc.push(process.env.SMTP_CC);
   }
-  if (req.body.from && req.body.to && req.body.subject && req.body.text && req.body.html) {
+  if (req.body.fromHost && req.body.replyTo && req.body.to && req.body.subject && req.body.text && req.body.html) {
     if (req.body?.cc) {
       _cc.push(req.body.cc);
     }
@@ -17,11 +17,12 @@ sendEmail = function (req, res) {
       _cc.push(process.env.SMTP_CC);
     }
     return deliver({
-      from: req.body.from,
+      from: `${req.body.fromHost} <${process.env.SMTP_FROM}>`,
       to: req.body.to,
+      replyTo: req.body.replyTo,
       cc: _cc,
       subject: `${req.body.subject}`,
-      text: req.body.text, 
+      text: req.body.text,
       html: req.body.html
     }, res);
   } else {
@@ -33,8 +34,8 @@ sendEmail = function (req, res) {
 function deliver(message, res) {
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
-    port: process.env.SMTP_PORT,
-    secure: true, // true for 465, false for other ports
+    port: parseInt(process.env.SMTP_PORT, 10),
+    secure: false, // true for 465, false for other ports
     auth: {
       user: process.env.SMTP_FROM,
       pass: process.env.SMTP_PASS
