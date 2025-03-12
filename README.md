@@ -1,6 +1,12 @@
-# An Email Dispatcher API
+# An Mailing API Server
 
-> Small server to send an emails using SMTP
+> This is a simple API server to send emails. It is built with Node.js and Express.js. It uses SMTP to send emails.
+
+## Features
+- Send an email
+- Security: Whitelist and Access Key
+- Set Your SMTP Credentials
+
 ## API Usage
 
 **Send an email**
@@ -10,8 +16,9 @@
 
 ```json
 {
-  "from": "",
+  "from": "", // The website name e.g. "Bansah and Associates"
   "to": "",
+  "replyTo": "",
   "cc": "",
   "subject": "",
   "text": "",
@@ -48,6 +55,7 @@ npm install
 ```sh
 # With NPM Command Line:
 npm run start
+# or
 # With Docker Compose:
 docker-compose up
 ```

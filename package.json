@@ -1,14 +1,10 @@
 {
   "name": "mailer-api",
   "version": "1.0.0",
-  "description": "An email API dispatcher",
+  "description": "A mailing API server",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DanielGraham123/mailing-api.git"
   },
   "keywords": [
     "email",
@@ -17,12 +13,8 @@
     "mail",
     "docker"
   ],
-  "author": "DanielGraham123",
+  "author": "Velte Technology Solutions",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/DanielGraham123/mailing-api/issues"
-  },
-  "homepage": "https://github.com/DanielGraham123/mailing-api#readme",
   "dependencies": {
     "cors": "2.8.5",
     "dotenv": "16.4.5",
