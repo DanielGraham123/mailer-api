@@ -56,7 +56,7 @@ app.post(
     .trim()
     .escape()
     .isLength({ min: 2 }),
-  body("html").optional().not().isEmpty().trim().escape().isLength({ min: 2 }),
+  body("html").optional().not().isEmpty().trim().isLength({ min: 2 }),
   body("text").optional().not().isEmpty().trim().escape().isLength({ min: 2 }),
   (req, res, next) => {
     // Finds the validation errors in this request and wraps them in an object with handy functions
