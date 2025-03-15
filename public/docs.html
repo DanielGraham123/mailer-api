@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mailer API Documentation</title>
+    <link rel="stylesheet" href="/docs.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>Mailer API Documentation</h1>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+          <h2>Welcome to the Mailer API</h2>
+          <p>
+            In order to alleviate the stress of setting up a mail server each
+            time we are builing a new website, why not use this mailer API that
+            is already set up and ready to go.
+          </p>
+          <p>
+            It is built with Node.js, Express.js and Nodemailer using the
+            tekshark mailing credentials to relay emails to the recipient.
+          </p>
+          <button
+            class="cta-btn"
+            onclick="document.getElementById('get-started').scrollIntoView()"
+          >
+            Get Started
+          </button>
+        </section>
+
+        <!-- Overview Section -->
+        <section class="doc-section" id="overview">
+          <h2>Overview</h2>
+          <p>
+            Our Mailer API is built on Node.js and Express.js, leveraging SMTP
+            for fast and reliable email delivery. Secure your requests with API
+            keys and domain whitelisting while enjoying the flexibility to send
+            both plain text and rich HTML emails.
+          </p>
+        </section>
+
+        <!-- Endpoints Section -->
+        <section class="doc-section" id="endpoints">
+          <h2>API Endpoints</h2>
+          <div class="card-grid">
+            <div class="card">
+              <h3>GET /readme</h3>
+              <p>Renders the README in HTML format with dynamic values.</p>
+            </div>
+            <div class="card">
+              <h3>POST /send</h3>
+              <p>Sends an email using the provided JSON payload.</p>
+              <p><strong>Sample Payload:</strong></p>
+              <pre>
+{
+  "fromHost": "Your Company",
+  "replyTo": "user@example.com",
+  "to": "recipient@example.com",
+  "subject": "Your Subject",
+  "text": "Plain text email content",
+  "html": "&lt;p&gt;HTML email content&lt;/p&gt;"
+}</pre
+              >
+            </div>
+          </div>
+        </section>
+
+        <!-- Setup Environment Variables Section -->
+        <section class="doc-section" id="get-started">
+          <h2>Setup Environment Variables</h2>
+          <p>
+            To integrate the Mailer API with a React frontend, ensure your
+            <code>.env</code> file contains the following variables:
+          </p>
+          <pre>
+REACT_APP_MAIL_SERVER=https://mailer.tekshark.pro
+REACT_APP_MAIL_USER="The Site/Company Name"
+REACT_APP_MAIL_KEY="Velte's mailer API key"
+REACT_APP_EMAIL_TO=yousiteemail@yourdomain
+              </pre
+          >
+        </section>
+
+        <!-- Integrate the API -->
+        <section class="doc-section" id="">
+          <h2>Integrate with React</h2>
+          <p>
+            Integrate the Mailer API into any React project with a simple API
+            call:
+          </p>
+          <pre>
+const sendEmail = async () => {
+  const response = await fetch(`${process.env.REACT_APP_MAIL_SERVER}/send`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: process.env.REACT_APP_MAIL_KEY,
+    },
+    body: JSON.stringify({
+      fromHost: process.env.REACT_APP_MAIL_USER,
+      replyTo: userEmail,
+      to: process.env.REACT_APP_EMAIL_TO,
+      subject: "Contact Form Submission",
+      text: "Plain text content",
+      "html": "&lt;p&gt;HTML email content&lt;/p&gt;"
+    }),
+  });
+  // Handle the response accordingly...
+};
+          </pre>
+        </section>
+
+        <!-- Support Section -->
+        <section class="doc-section" id="support">
+          <h2>Support</h2>
+          <p>
+            If you encounter any issues or have questions regarding the Mailer
+            API, please reach out to our support team at
+            <a href="mailto:contact@veltetech.com" style="color: #1e90ff"
+              >contact@veltetech.com</a
+            >.
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 Velte Technology Solutions. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
